@@ -1,0 +1,13 @@
+<% provide(:title, t("user_list")) %>
+<% provide(:path, users_path )%>
+
+<h1>All users</h1>
+<%= render 'shared/search_form' %>
+<%= will_paginate %>
+<ul class="users">
+    <li>
+      <%= render @users %>
+    </li>
+</ul>
+<%= will_paginate %>
+

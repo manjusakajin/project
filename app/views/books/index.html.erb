@@ -1,0 +1,20 @@
+<% provide :title, t("header.book_list") %>
+<% provide(:path, books_path )%>
+
+<h1><%= t "header.book_list" %></h1>
+<%= render 'shared/search_form' %>
+<ul class="books">
+  <% @books.each do |book| %>
+    <li>
+      <p>
+        <%= gravatar_for book %>
+        <p><span><%= link_to book.name, book %>
+        <% if logged_in? && current_user.admin? %>
+         |<%= link_to t("user.delete"), admin_book_url(book.id), method: :delete,
+         data: { confirm: t("message.confirm") } %>
+         <% end %></span></p>
+      </p>
+    </li>
+  <% end %>
+  <p><%= will_paginate @books %></p>
+</ul>

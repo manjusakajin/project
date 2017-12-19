@@ -1,0 +1,22 @@
+<% provide :title, @user.name %>
+<h1>
+  <p>
+    <%= gravatar_for @user %>
+    <%= @user.name %>
+  </p>
+</h1>
+<%= render "follow_form" if logged_in? %>
+<section class="stats">
+  <%= render "shared/stats" %>
+</section>
+<div class="row">
+  <div class="col-md-4">
+    <h3><%= t "review.title" %> (<%= @user.reviews.count %>)</h3>
+    <% if @user.reviews.any? %>
+      <ol class="reviews">
+        <%= render @reviews %>
+      </ol>
+      <p><%= will_paginate @reviews %></p>
+    <% end %>
+  </div>
+</div>

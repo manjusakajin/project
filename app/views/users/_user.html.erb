@@ -1,0 +1,8 @@
+<p><%= link_to gravatar_for user, size: 50%>
+<span class="user"><%= link_to user.name, user %>
+<% if logged_in? && current_user.admin? && !user.is_user?(current_user) %>
+  | <%= link_to t("user.delete"), admin_user_path(user.id) ,method: :delete,
+      data: { confirm: t("message.confirm") } %> |
+    <%= link_to "Chance to Admin ", admin_user_path(user.id),method: :put,
+      data: { confirm: t("message.confirm") } %>
+<% end %></span></p>

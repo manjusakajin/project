@@ -1,0 +1,14 @@
+<% provide :title, @genre.name %>
+<h1><%= @genre.name %></h1>
+<ul class="genres">
+  <% if @book_genres.any? %>
+    <% @book_genres.each do |book_genre| %>
+      <li>
+        <p>
+          <%= gravatar_for book_genre.book, size: 100 %>
+          <%= link_to book_genre.book.name, book_genre.book %>
+        </p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

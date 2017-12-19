@@ -1,0 +1,16 @@
+<% provide :title, t("header.review_list") %>
+<% provide(:path, reviews_path )%>
+
+<h1><%= t "header.review_list" %></h1>
+<%= render 'shared/search_form' %>
+<ul class="reviews">
+  <% @reviews.each do |review| %>
+    <li>
+      <p>
+        <%= gravatar_for review.user, size: 100 %>
+        <%= link_to review.title, book_review_path(review.book_id, review) %>
+      </p>
+    </li>
+  <% end %>
+  <p><%= will_paginate @reviews %></p>
+</ul>

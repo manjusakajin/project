@@ -1,0 +1,44 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to t("name"), root_path, class: "navbar-brand" %>
+    </div>
+    <ul class="nav navbar-nav navbar-center">
+      <li><%= link_to t("header.user_list"), users_path %></li>
+      <li><%= link_to t("header.book_list"), books_path %></li>
+      <li><%= link_to t("header.review_list"), reviews_path %></li>
+      <li><%= link_to t("genre.list"), genres_path %></li>
+      <% if logged_in?&&current_user.admin? %>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Book Manage <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Create book", new_admin_book_path %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= t "dropdown.account" %> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to t("dropdown.profile"), current_user %></li>
+            <li><%= link_to t("dropdown.setting"),
+              edit_user_path(id: current_user.id) %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to t("dropdown.logout"), logout_path, method: :delete %>
+            </li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to t("header.log_in"), login_path %></li>
+        <li><%= link_to t("header.sign_up"), signup_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>

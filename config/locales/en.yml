@@ -1,33 +1,123 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
+  home:
+    title: "Home"
+    new_book: "New Book"
+    new_review: "New Review"
+  help:
+    title: "Help"
+    welcome: "Welcome to Book Review"
+  about:
+    title: "About"
+  contact:
+    title: "Contact"
+  name: "Book Review"
+  header:
+    book_list: "Book List"
+    review_list: "Review List"
+    user_list: "User List"
+    sign_up: "Sign Up"
+    log_in: "Log In"
+    review: "Review"
+    rate: "Rate"
+  success:
+    welcome: "Welcome to to Book Review!"
+    activation: "Account activated!"
+    book: "Book created"
+    update: "Updated"
+  danger:
+    not_found: "User not found"
+    email: "Invalid email/password combination"
+    activation: "Invalid activation link"
+    login: "Please log in"
+    book: "Book %{param} not found!"
+    create_book: "Just admin can create book"
+    access: "You are not allowed for access"
+  error: "error"
+  user:
+    comfirm: "Confirmation"
+    create: "Create my account"
+    view_info: "View my Profile"
+    edit: "Edit"
+    update: "Update"
+    delete: "Delete"
+    delete_success: "User deleted"
+  form_contains: "The form contains"
+  link:
+    sign_up: "Sign up now!"
+    users: "Users"
+    create_review: "Create Review"
+  message:
+    new_user: "New user?"
+    remember: "Remember me on this computer"
+    confirm: "You sure?"
+  dropdown:
+    profile: "Profile"
+    setting: "Settings"
+    logout: "Log out"
+    account: "Account"
+  mailer:
+    title: "Book Review"
+    greeting: "Hi %{username},"
+    message: "Welcome to the Book Review! Click on the link below to activate your account:"
+    activate: "Activate"
+    activation: "Account activation"
+    password_reset: "Password reset"
+  warning:
+    activation: "Account not activated. Check your email for the activation link."
+  info:
+    activation: "Please check your email to activate your account."
+  review:
+    title: "Review"
+    created_at: "Posted %{time} ago."
+    create: "Create Review"
+    created: "Review created!"
+    not_found: "Can't find this review."
+    edit: "Edit your review"
+    destroy: "Delete your review"
+    deleted: "Review deleted"
+    fobid: "Cant create review for this book any more"
+    change: "Save change"
+    updated: "Review updated"
+    for: "Review for book: "
+  rate:
+    title: "Rate"
+    story: "Story:"
+    art: "Art:"
+    sound: "Sound:"
+    character: "Character:"
+    enjoyment: "Enjoyment:"
+    rate_this: "Rate this book!"
+  book:
+    create: "Create Book"
+    introduce: "Introdution: "
+    web_ratting: "Web Ratting: "
+    user_ratting: "User Ratting: "
+    not_found: "Can't find this book"
+    overall: "Overall: "
+    update: "Book Update"
+    delete: "Book Deleted"
+  follow:
+    following: "Following"
+    followers: "Followers"
+    title: "Follow"
+    unfollow: "Unfollow"
+  genre:
+    title: "Genres"
+    not_found: "Genre not found"
+    history: "Historical"
+    action: "Action"
+    shounen: "Shounen"
+    adventure: "Adventure"
+    mecha: "Mecha"
+    SOL: "Slice of Life"
+    comedy: "Comedy"
+    romance: "Romance"
+    sport: "Sports"
+    drama: "Drama"
+    science: "Science Fiction"
+    ecchi: "Ecchi"
+    seinen: "Seinen/Mature"
+    fantasy: "Fantasy"
+    shoujo: "Shoujo"
+    list: "Genre List"

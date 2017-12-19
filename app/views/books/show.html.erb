@@ -1,0 +1,44 @@
+<% provide :title, @book.name %>
+<div class = "row">
+  <div class = "col-md-12">
+    <h3>
+      <%= gravatar_for @book, size: 50  %>
+      <%= @book.name %>
+    </h3>
+    <p><%= t "book.introduce" %><%= @book.introdution %></p>
+    <p><%= t "book.web_ratting" %><%= @book.web_ratting %></p>
+    <% if @book.book_genres.any? %>
+      <% @book.book_genres.each do |book_genre| %>
+          <span>
+            <%= link_to book_genre.genre.name, book_genre.genre %>
+          </span>
+      <% end %>
+    <% end %>
+    <% if logged_in? && current_user.admin? %>
+      <p><%= link_to t("book.update"), edit_admin_book_path %></p>
+    <% end %>
+    <p><b><%= t "rate.rate_this" %></b></p>
+    <%= t "rate.story" %><%= rating_for @book, "story", star: 10,
+      cancel: true, disable_after_rate: false %>
+
+    <%if @book.average("story") %>
+    <p><%= t "book.overall" %><%= @book.average("story").avg %></p>
+    <%end%>
+    <% unless logged_in? && current_user.reviewed?(@book) %>
+      <div>
+        <%= link_to t("review.create"), new_book_review_path(@book) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class = "row">
+  <div class="col-md-12">
+    <% if @reviews.any? %>
+      <h3><%= t "review.title" %> (<%= @reviews.count %>)</h3>
+      <ol class="reviews">
+        <%= render @reviews %>
+      </ol>
+      <p><%= will_paginate @reviews %></p>
+    <% end %>
+  </div>
+</div>

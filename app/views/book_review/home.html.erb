@@ -1,0 +1,20 @@
+<% provide :title, t("home.title") %>
+<div class="row">
+  <h1><%= t "home.new_book" %></h1>
+  <% @books.each do |book| %>
+    <div class="col-md-3">
+      <%= gravatar_for book, size: 200 %>
+      <p><%= link_to book.name, book %></p>
+    </div>
+  <% end %>
+</div>
+<div class="row">
+  <h1><%= t "home.new_review" %></h1>
+  <% @reviews.each do |review| %>
+    <div class="col-md-3">
+      <%= gravatar_for review.user, size: 200 %>
+      <p><%= link_to review.title,
+        book_review_path(book_id: review.book.id, id: review.id) %></p>
+    </div>
+  <% end %>
+</div>

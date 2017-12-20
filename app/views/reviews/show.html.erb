@@ -4,7 +4,7 @@
   <%= gravatar_for @review.user, size: 100 %>
   <span class="user"><%= link_to @review.user.name, @review.user %></span>
   <p><%= t "review.for" %><%= @book.name %></p>
-  <% if current_user.created? @review %>
+  <% if logged_in? && current_user.created?(@review) %>
     <%= link_to t("review.destroy"), book_review_path, method: :delete,
       data: {confirm: t("message.confirm")} %>
     <br>

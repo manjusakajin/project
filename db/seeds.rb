@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name:  "Admin",
+User.create!(name:  "Admin123",
              email: "admin@gmail.com",
-             password:              "admin",
-             password_confirmation: "admin",
+             password:              "admin123",
+             password_confirmation: "admin123",
              activated: true,
              admin: true)
 
@@ -24,11 +24,36 @@ User.create!(name:  "Admin",
 end
 99.times do |n|
   name  = Faker::Name.name
-  introduction = "Demo Book"
+  introduction = Faker::Lorem.paragraphs(paragraph_count = 20, supplemental = false)
   web_rate = 3.5
   Book.create!(name:  name,
                introdution: introduction,
                web_ratting: web_rate)
+end
+
+99.times do |n|
+  book_id = Faker::Number.between(from = 1.00, to = 100.00)
+  genre_id = Faker::Number.between(from = 1.00, to = 10.00)
+  BookGenre.create!(book_id: book_id,
+                      genre_id: genre_id)
+end
+
+99.times do |n|
+  follower_id = Faker::Number.between(from = 1.00, to = 100.00)
+  followed_id = Faker::Number.between(from = 1.00, to = 100.00)
+  Relationship.create!(follower_id: follower_id,
+                        followed_id: followed_id)
+end
+
+99.times do |n|
+  title  = Faker::Name.name
+  user_id = Faker::Number.between(from = 1.00, to = 100.00)
+  book_id = Faker::Number.between(from = 1.00, to = 100.00)
+  content = Faker::Lorem.paragraphs(paragraph_count = 20, supplemental = false)
+  Review.create!(user_id: user_id,
+                book_id: book_id,
+                content: content,
+                title: title)
 end
 Genre.create(name: "Historical", id:7)
 Genre.create(name: "Action", id:1)

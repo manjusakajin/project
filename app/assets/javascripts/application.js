@@ -19,3 +19,4 @@
 //= require jquery.raty
 //= require ratyrate
 //= require nested_form_fields
+//= require cloudinary

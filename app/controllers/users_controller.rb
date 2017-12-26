@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :find_user, except: [:new, :create, :index]
   before_action :correct_user, only: [:edit, :update]
+  before_action :upload_image, only: [:create, :update]
 
   def index
     if params[:search] == nil
@@ -58,7 +59,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation
+      :password_confirmation, :image, :remove_image, :image_cache,
+      :remote_image_url
   end
 
   def find_user
@@ -73,6 +75,16 @@ class UsersController < ApplicationController
     unless current_user.is_user? @user
       flash[:danger] = t "danger.correct_user"
       redirect_to root_url
+    end
+  end
+
+  def upload_image
+    if(params[:user][:image])
+        Cloudinary::Uploader.upload(params[:user][:image])
+      else
+        if(params[:user][:remote_image_url])
+        Cloudinary::Uploader.upload(params[:user][:remote_image_url])
+        end
     end
   end
 end

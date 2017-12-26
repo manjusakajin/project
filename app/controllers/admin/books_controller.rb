@@ -2,6 +2,7 @@ class Admin::BooksController < ApplicationController
   before_action :check_login
   before_action :check_admin
   before_action :find_book, only: [:edit, :update, :destroy]
+  before_action :upload_image, only: [:create, :update]
 
   def new
     @book = Book.new
@@ -41,6 +42,8 @@ class Admin::BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit :name, :introdution, :web_ratting,
+      :image, :remove_image, :image_cache,
+      :remote_image_url,
       genre_ids: [],genres_attributes:[:name]
   end
 
@@ -63,6 +66,16 @@ class Admin::BooksController < ApplicationController
     unless @book
       flash[:danger] = t "danger.book"
       redirect_to root_url
+    end
+  end
+
+  def upload_image
+    if(params[:book][:image])
+        Cloudinary::Uploader.upload(params[:book][:image])
+      else
+        if(params[:book][:remote_image_url])
+        Cloudinary::Uploader.upload(params[:book][:remote_image_url])
+        end
     end
   end
 end

@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :logged_in_user, except: [:show, :index]
   before_action :find_book, except: [:index]
   before_action :find_review, only: [:edit, :update, :destroy]
+  before_action :upload_image, only: [:create, :update]
 
   def index
     if params[:search]
@@ -62,7 +63,8 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit :title, :content
+    params.require(:review).permit :title, :content,  :image, :remove_image, :image_cache,
+      :remote_image_url
   end
 
   def find_book
@@ -78,6 +80,16 @@ class ReviewsController < ApplicationController
     unless @review
       flash[:danger] = t "danger.access"
       redirect_to root_path
+    end
+  end
+
+  def upload_image
+    if(params[:review][:image])
+        Cloudinary::Uploader.upload(params[:review][:image])
+      else
+        if(params[:review][:remote_image_url])
+        Cloudinary::Uploader.upload(params[:review][:remote_image_url])
+        end
     end
   end
 end

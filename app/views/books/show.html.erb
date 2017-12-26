@@ -2,7 +2,11 @@
 <div class = "row">
   <div class = "col-md-12">
     <h3>
-      <%= gravatar_for @book, size: 50  %>
+      <% if @book.image.present? %>
+       <%= image_tag(@book.image_url,:width => 250, :height => 250) %>
+       <%else%>
+        <%= image_tag("images.jpeg",:width => 250, :height => 250) %>
+       <%end%>
       <%= @book.name %>
     </h3>
     <p><%= t "book.introduce" %><%= @book.introdution %></p>

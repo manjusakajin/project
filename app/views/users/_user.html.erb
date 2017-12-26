@@ -1,4 +1,8 @@
-<p><%= link_to gravatar_for user, size: 50%>
+<p><% if user.image.present? %>
+   <%= image_tag(user.image_url,:width => 250, :height => 250) %>
+   <%else%>
+    <%= image_tag("images.jpeg",:width => 250, :height => 250) %>
+   <%end%>
 <span class="user"><%= link_to user.name, user %>
 <% if logged_in? && current_user.admin? && !user.is_user?(current_user) %>
   | <%= link_to t("user.delete"), admin_user_path(user.id) ,method: :delete,

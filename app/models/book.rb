@@ -9,7 +9,8 @@ class Book < ApplicationRecord
   validates :introdution, presence: true
   validates :web_ratting, presence: true
 
-  ratyrate_rateable "story", "art", "sound", "character", "enjoyment"
+  ratyrate_rateable "story"
+  mount_uploader :image, ImageUploader
 
   def overall_ratings
     array = Rate.where rateable_id: id, rateable_type: "book"

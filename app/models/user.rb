@@ -5,7 +5,6 @@ class User < ApplicationRecord
   before_create :create_activation_digest
 
   has_many :reviews
-  has_many :comments
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id
   has_many :following, through: :active_relationships, source: :followed
@@ -23,6 +22,8 @@ class User < ApplicationRecord
   has_secure_password
 
   ratyrate_rater
+
+  mount_uploader :image, ImageUploader
 
   class << self
     def digest string

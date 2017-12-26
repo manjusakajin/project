@@ -7,7 +7,11 @@
   <% @reviews.each do |review| %>
     <li>
       <p>
-        <%= gravatar_for review.user, size: 100 %>
+        <% if review.image.present? %>
+        <%= image_tag(review.image_url,:width => 250, :height => 250) %>
+        <%else%>
+        <%= image_tag("images.jpeg",:width => 250, :height => 250) %>
+        <%end%>
         <%= link_to review.title, book_review_path(review.book_id, review) %>
       </p>
     </li>

@@ -19,13 +19,16 @@ gem "bootstrap-sass", "3.3.6"
 gem "bcrypt", "3.1.11"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "config"
-gem "ckeditor"
+gem "ckeditor"      #form tao review
 gem "paperclip", "5.1.0"
 gem "will_paginate", "3.1.0"
 gem "bootstrap-will_paginate", "0.0.10"
-gem "ratyrate", github: "wazery/ratyrate"
+gem "ratyrate", github: "wazery/ratyrate" #rate
 gem "faker", "1.7.3"
 gem "nested_form_fields"
+gem "carrierwave"
+gem "mini_magick"
+gem "cloudinary"
 
 
 group :development, :test do

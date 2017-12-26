@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219074538) do
+ActiveRecord::Schema.define(version: 20171226054653) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20171219074538) do
     t.float    "user_ratting"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "image"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -101,7 +102,7 @@ ActiveRecord::Schema.define(version: 20171219074538) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id"
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20171219074538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "title"
+    t.string   "image"
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
   end
 
@@ -128,6 +130,7 @@ ActiveRecord::Schema.define(version: 20171219074538) do
     t.boolean  "admin"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "image"
   end
 
 end

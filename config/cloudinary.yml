@@ -1,0 +1,13 @@
+---
+development:
+  cloud_name: bachkhoa
+  api_key: '343234663425594'
+  api_secret: rQHZwfmZzBcb5tS7-xtTU2eiE-A
+production:
+  cloud_name: bachkhoa
+  api_key: '343234663425594'
+  api_secret: rQHZwfmZzBcb5tS7-xtTU2eiE-A
+test:
+  cloud_name: bachkhoa
+  api_key: '343234663425594'
+  api_secret: rQHZwfmZzBcb5tS7-xtTU2eiE-A

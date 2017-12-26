@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -97,6 +98,18 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def self.from_omniauth(auth)
+  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user.email = auth.info.email
+    user.name = auth.info.name   # assuming the user model has a name
+    user.image = auth.info.image # assuming the user model has an image
+    user.password = "123456"
+    user.activated = true
+    user.save!
+    user
+  end
   end
 
   private

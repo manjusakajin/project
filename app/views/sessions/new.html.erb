@@ -19,6 +19,7 @@
 
       <%= f.submit t("header.log_in"), class: "btn btn-primary" %>
     <% end %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
 
     <p>
       <%= t "message.new_user" %>

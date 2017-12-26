@@ -29,7 +29,8 @@ gem "nested_form_fields"
 gem "carrierwave"
 gem "mini_magick"
 gem "cloudinary"
-
+gem "omniauth"
+gem "omniauth-facebook" # Facebook authentication
 
 group :development, :test do
   gem "byebug", platform: :mri
